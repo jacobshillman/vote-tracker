@@ -1,5 +1,4 @@
-
-
+/*Array container for vote choices:   */
 var favBeverages = new Array ();
   favBeverages.push({ label: "beer", y: 0, folder: "Images/beer.jpg" });
   favBeverages.push({ label: "wine", y: 0, folder: "Images/wine.jpg" });
@@ -12,53 +11,73 @@ var favBeverages = new Array ();
   favBeverages.push({ label: "milk", y: 0, folder: "Images/milk.jpg" });
   favBeverages.push({ label: "fruit juice", y: 0, folder: "Images/fruitjuice.jpg" });
 
-  console.log(favBeverages[Math.floor(Math.random() * favBeverages.length)]);
-
+/*Function to dsiplay beverages, write choice buttons, then display second beverage set:  */
 function selectBeverages () {
   var img1Index = Math.floor(Math.random() * favBeverages.length);
   var img1Disp = document.createElement("img");
+    img1Disp.id = "img1pic";
     img1Disp.src = favBeverages[img1Index].folder;
   document.getElementById("img1").appendChild(img1Disp);
   var img1Button = document.createElement("input");
+    img1Button.className = "choiceButton";
     img1Button.type = "button";
     img1Button.name = "btn1";
     img1Button.id = img1Index;
-    img1Button.value = "Vote for me!"
+    img1Button.value = "Vote for me!";
+    img1Button.addEventListener("click", function () {
+        countVote(this);
+        clearSpans();
+      }); /*addEventListener closure.   */
   document.getElementById("img1").appendChild(img1Button);
-  var img2Index = Math.floor(Math.random() * favBeverages.length);
-    if (img2Index == img1Index) {
-      var img2Index = Math.floor(Math.random() * favBeverages.length);
-      var img2Disp = document.createElement("img");
-      img2Disp.src = favBeverages[img2Index].folder;
-      document.getElementById("img2").appendChild(img2Disp);
-      var img2Button = document.createElement("input");
-        img2Button.type = "button";
-        img2Button.name = "btn2";
-        img2Button.id = img1Index;
-        img2Button.value = "Vote for me!"
-      document.getElementById("img2").appendChild(img2Button);
-    } else {
-      var img2Disp = document.createElement("img");
-      img2Disp.src = favBeverages[img2Index].folder;
-      document.getElementById("img2").appendChild(img2Disp);
-      var img2Button = document.createElement("input");
-        img2Button.type = "button";
-        img2Button.name = "btn2";
-        img2Button.id = img1Index;
-        img2Button.value = "Vote for me!"
-      document.getElementById("img2").appendChild(img2Button);
-    }
+/*do:while loop to ensure second image is different from first image:   */
+  do {var img2Index = Math.floor(Math.random() * favBeverages.length)}
+    while (img2Index == img1Index);
+  var img2Disp = document.createElement("img");
+    img2Disp.id = "img2pic"
+    img2Disp.src = favBeverages[img2Index].folder;
+  document.getElementById("img2").appendChild(img2Disp);
+  var img2Button = document.createElement("input");
+    img2Button.className = "choiceButton";
+    img2Button.type = "button";
+    img2Button.name = "btn2";
+    img2Button.id = img2Index;
+    img2Button.value = "Vote for me!";
+    img2Button.addEventListener("click", function () {
+    countVote(this);
+    clearSpans();
+      }); /*addEventListener closure.   */
+  document.getElementById("img2").appendChild(img2Button);
+}; /*function selectBeverages closure.  */
+
+function clearSpans () {
+  if (document.getElementById("img1pic") != "") {
+  var removeImg1 = document.getElementById("img1pic");
+  removeImg1.parentNode.removeChild(removeImg1);
+  var removeBtn1 = document.getElementsByName("btn1");
+  removeBtn1[0].parentNode.removeChild(removeBtn1[0]);
+  }
+  if (document.getElementById("img2pic") != "") {
+    var removeImg2 = document.getElementById("img2pic");
+    removeImg2.parentNode.removeChild(removeImg2);
+    var removeBtn2 = document.getElementsByName("btn2");
+    removeBtn2[0].parentNode.removeChild(removeBtn2[0]);
+  }
+  selectBeverages();
 };
 
-
+/*Variables and function to increment value in chart:   */
 var chart = null;
+var incrementVote = 0;
+function countVote (vote) {
+  incrementVote = parseInt(vote.id);
+    console.log(incrementVote);
+  favBeverages[incrementVote].y++;
+    console.log(favBeverages[incrementVote]);
+//  chart.render();
+}; /*function countVote closure.  */
 
-function countVote () {
-//  favBeverages[??].y++;
-  chart.render();
-}
-
-window.onload = function () {
+/*Chartjs.js charting function:   */
+window.addEventListener('load', function () {
   var chart = new CanvasJS.Chart("chartDiv", {
 
     title:{
@@ -69,7 +88,7 @@ window.onload = function () {
        { //dataSeries object
 
          /*** Change type "column" to "bar", "area", "line" or "pie"***/
-         type: "line",
+         type: "column",
          dataPoints: favBeverages
        }
      ]
@@ -77,11 +96,4 @@ window.onload = function () {
 
  chart.render();
  selectBeverages();
-
-}
-/*
-function () {
-  datapoints[2].y++;
- chart.render();
-};
-*/
+}); /*indow.addEventListener('load', function closure.  */
