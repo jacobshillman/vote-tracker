@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+  #chartContainer {height: 300px; width: 100%;}
+  </style>
+  <script type="text/javascript">
+  // Global Variables
+  //    Data to Graph
+  var purchaseData = new Array();
+  purchaseData.push({ label: "banana", y: 18 });
+  purchaseData.push({ label: "orange", y: 29 });
+  purchaseData.push({ label: "apple", y: 40 });
+  purchaseData.push({ label: "mango", y: 34 });
+  purchaseData.push({ label: "grape", y: 24 });
+  //    Chart Object
+  var chart = null;
+
+  function changeApple() {
+    purchaseData[2].y++;
+    chart.render();
+  }
+
+  window.onload = function () {
+
+    chart = new CanvasJS.Chart("chartContainer", {
+
+      title: {text: "Fruits sold in First Quarter"},
+      data: [//array of dataSeries
+        /*** Change type "column" to "bar", "area", "line" or "pie"***/
+              {
+               type: "column",
+               dataPoints: purchaseData
+              }
+            ]
+     });
+
+    chart.render();
+  }
+  </script>
+  <script type="text/javascript" src="canvasjs.min.js"></script>
+</head>
+<body>
+  <div id="chartContainer" >
+  </div>
+  <h1>My Special Chart</h1>
+  <input type="button" value="Change Apple" onclick="changeApple()">
+</body>
+</html>

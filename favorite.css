@@ -1,0 +1,36 @@
+#chartDiv div {
+  display: block;
+  height: 450px;
+}
+
+#img1 {
+  display: inline-block;
+  float: left;
+  max-height: 300px;
+  max-width: 300px;
+  margin-left: 15%;
+}
+
+#img2 {
+  display: inline-block;
+  float: right;
+  max-height: 300px;
+  max-width: 300px;
+  margin-right:15%;
+}
+
+#btn1 {
+  display: block;
+  vertical-align: bottom;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#btn2 {
+  display: block;
+  vertical-align: bottom;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
