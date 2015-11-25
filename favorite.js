@@ -70,9 +70,7 @@ var chart = null;
 var incrementVote = 0;
 function countVote (vote) {
   incrementVote = parseInt(vote.id);
-    console.log(incrementVote);
   favBeverages[incrementVote].y++;
-    console.log(favBeverages[incrementVote]);
 //  chart.render();
 }; /*function countVote closure.  */
 
