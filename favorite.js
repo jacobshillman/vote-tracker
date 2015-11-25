@@ -66,17 +66,17 @@ function clearSpans () {
 };
 
 /*Variables and function to increment value in chart:   */
-var chart = null;
+var chart = 4;
 var incrementVote = 0;
 function countVote (vote) {
   incrementVote = parseInt(vote.id);
   favBeverages[incrementVote].y++;
-//  chart.render();
+  chart.render();
 }; /*function countVote closure.  */
 
 /*Chartjs.js charting function:   */
 window.addEventListener('load', function () {
-  var chart = new CanvasJS.Chart("chartDiv", {
+  chart = new CanvasJS.Chart("chartDiv", {
 
     title:{
       text: "The beverage people enjoy most:"
