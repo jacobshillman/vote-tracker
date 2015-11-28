@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -34,3 +35,9 @@
   </div>
 </body>
 </html>
+-->
+
+Persistence via HTML5 localStorage:
+
+See stackoverflow.com "JSON how to parse objects with methods"
+
