@@ -1,15 +1,15 @@
 /*Array container for vote choices:   */
 var favBeverages = new Array ();
-  favBeverages.push({ label: "beer", y: 0, folder: "Images/beer.jpg" });
-  favBeverages.push({ label: "wine", y: 0, folder: "Images/wine.jpg" });
-  favBeverages.push({ label: "tea", y: 0, folder: "Images/tea.jpg" });
-  favBeverages.push({ label: "soda", y: 0, folder: "Images/soda.jpg" });
-  favBeverages.push({ label: "sports drink", y: 0, folder: "Images/sportsdrink.jpeg" });
-  favBeverages.push({ label: "energy drink", y: 0, folder: "Images/energydrinks.jpg" });
-  favBeverages.push({ label: "coffee", y: 0, folder: "Images/coffee.jpg" });
-  favBeverages.push({ label: "water", y: 0, folder: "Images/water.jpg" });
-  favBeverages.push({ label: "milk", y: 0, folder: "Images/milk.jpg" });
-  favBeverages.push({ label: "fruit juice", y: 0, folder: "Images/fruitjuice.jpg" });
+  favBeverages.push({ label: "beer", y: 0, folder: "Images/beer.jpg", x: 0 });
+  favBeverages.push({ label: "wine", y: 0, folder: "Images/wine.jpg", x: 1 });
+  favBeverages.push({ label: "tea", y: 0, folder: "Images/tea.jpg", x: 2 });
+  favBeverages.push({ label: "soda", y: 0, folder: "Images/soda.jpg", x: 3 });
+  favBeverages.push({ label: "sports drink", y: 0, folder: "Images/sportsdrink.jpeg", x: 4 });
+  favBeverages.push({ label: "energy drink", y: 0, folder: "Images/energydrinks.jpg", x: 5 });
+  favBeverages.push({ label: "coffee", y: 0, folder: "Images/coffee.jpg", x: 6 });
+  favBeverages.push({ label: "water", y: 0, folder: "Images/water.jpg", x: 7 });
+  favBeverages.push({ label: "milk", y: 0, folder: "Images/milk.jpg", x: 8 });
+  favBeverages.push({ label: "fruit juice", y: 0, folder: "Images/fruitjuice.jpg", x: 9 });
 
 /*Function to dsiplay beverages, write choice buttons, then display second beverage set:  */
 function selectBeverages () {
@@ -81,7 +81,12 @@ window.addEventListener('load', function () {
     title:{
       text: "The beverage people enjoy most:"
     },
-
+    axisY:{
+      interval: 5,
+    },
+    axisX:{
+      labelAngle: 45,
+    },
     data: [//array of dataSeries
        { //dataSeries object
 

@@ -5,8 +5,8 @@
 
 .image {
   display: inline-block;
-  max-height: 350px;
-  max-width: auto;
+  width: 450px;
+  height: 350px;
 }
 
 #img1 {
@@ -17,6 +17,12 @@
 #img2 {
   float: right;
   margin-right:12%;
+}
+
+img {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .choiceButton {
