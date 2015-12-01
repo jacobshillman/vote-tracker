@@ -89,26 +89,36 @@ function countVote (vote) {
 /*Chartjs.js charting function:   */
 window.addEventListener('load', function () {
   chart = new CanvasJS.Chart("chartDiv", {
+      backgroundColor: "",
+      animationEnabled: true,
+      animationDuration: 750,
+      interactivityEnabled: true,
 
     title:{
-      text: "The beverage people enjoy most:"
+      text: "The beverage people enjoy most:",
+      fontColor: "beige",
+      dockInsidePlotArea: true,
+      fontFamily: "Serif",
     },
     axisY:{
       interval: 5,
     },
     axisX:{
       labelAngle: 45,
+      labelFontColor: "beige",
+      labelFontWeight: "bold",
     },
     data: [//array of dataSeries
-       { //dataSeries object
+     { //dataSeries object
 
-         /*** Change type "column" to "bar", "area", "line" or "pie"***/
-         type: "column",
-         dataPoints: favBeverages
-       }
+      /*** Change type "column" to "bar", "area", "line" or "pie"***/
+      bevelEnabled: true,
+      type: "column",
+      dataPoints: favBeverages
+     }
      ]
    });
 
- chart.render();
- selectBeverages();
+  chart.render();
+  selectBeverages();
 }); /*indow.addEventListener('load', function closure.  */
