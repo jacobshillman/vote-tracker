@@ -11,7 +11,18 @@ var favBeverages = new Array ();
   favBeverages.push({ label: "milk", y: 0, folder: "Images/milk.jpg", x: 8 });
   favBeverages.push({ label: "fruit juice", y: 0, folder: "Images/fruitjuice.jpg", x: 9 });
 
-/*Function to dsiplay beverages, write choice buttons, then display second beverage set:  */
+/*Insert voting history into new session:   */
+var voteHistory = new Array();
+  voteHistory = JSON.parse(localStorage.getItem("beverageTracker"));
+
+function retrieveHistory() {
+  if (voteHistory) {
+    for (index = 0; index < favBeverages.length; index++) {
+    favBeverages.splice(index, 1, voteHistory[index]);
+    } /*if closure. */ } /*for closure. */ }; /*function retrieveHistory closure. */
+retrieveHistory();
+
+/*Function that displays beverage set and buttons, and resets beverages after vote:  */
 function selectBeverages () {
   var img1Index = Math.floor(Math.random() * favBeverages.length);
   var img1Disp = document.createElement("img");
@@ -55,15 +66,15 @@ function clearSpans () {
   removeImg1.parentNode.removeChild(removeImg1);
   var removeBtn1 = document.getElementsByName("btn1");
   removeBtn1[0].parentNode.removeChild(removeBtn1[0]);
-  }
+  } /*if closure. */
   if (document.getElementById("img2pic") != "") {
     var removeImg2 = document.getElementById("img2pic");
     removeImg2.parentNode.removeChild(removeImg2);
     var removeBtn2 = document.getElementsByName("btn2");
     removeBtn2[0].parentNode.removeChild(removeBtn2[0]);
-  }
+  } /*if closure. */
   selectBeverages();
-};
+}; /*function clearSpans closure.   */
 
 /*Variables and function to increment value in chart:   */
 var chart = 4;
@@ -71,6 +82,7 @@ var incrementVote = 0;
 function countVote (vote) {
   incrementVote = parseInt(vote.id);
   favBeverages[incrementVote].y++;
+  localStorage.setItem("beverageTracker", JSON.stringify(favBeverages));
   chart.render();
 }; /*function countVote closure.  */
 
