@@ -1,0 +1,51 @@
+body {
+  background: url(http://blog.hostbaby.com/wp-content/uploads/2013/07/scuffedstatic_dark1400x900.jpg);
+}
+
+@font-face {
+  font-family: 'urban';
+  src: url('urban.ttf');
+}
+
+header {
+  background: url(http://www.themesltd.com/backgrounds/random/black_brick_wall.jpg);
+  background-repeat: repeat;
+  background-position: center;
+  height: 200px;
+}
+
+header h1 {
+    font-family: 'urban', cursive;
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+    text-shadow: 3px 3px 5px red;
+}
+
+h1, h2 {
+  font-family: 'Rock Salt', cursive;
+  color: white;
+  text-align: center;
+}
+
+#artistVote{
+  margin-left: 450px;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  border: 5px solid #5a5a5a;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+#chartContainer {
+  width: 850px;
+  height: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border: 10px solid #5a5a5a;
+
+}

@@ -109,9 +109,11 @@ window.addEventListener('load', function () {
     },
     axisX:{
       labelAngle: 45,
-      labelFontColor: "beige",
+      labelFontColor: "orange",
       labelFontWeight: "bold",
-      lineColor: "#73cd12"
+      lineColor: "#73cd12",
+      labelMaxWidth: 70,
+      labelWrap: true
     },
     data: [//array of dataSeries
      { //dataSeries object
