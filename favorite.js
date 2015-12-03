@@ -102,11 +102,15 @@ window.addEventListener('load', function () {
     },
     axisY:{
       interval: 5,
+      labelFontColor: "red",
+      gridColor: "#73cd12",
+      lineColor: "#73cd12"
     },
     axisX:{
       labelAngle: 45,
       labelFontColor: "beige",
       labelFontWeight: "bold",
+      lineColor: "#73cd12"
     },
     data: [//array of dataSeries
      { //dataSeries object
