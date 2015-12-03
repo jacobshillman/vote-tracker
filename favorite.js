@@ -11,7 +11,7 @@ var favBeverages = new Array ();
   favBeverages.push({ label: "milk", y: 0, folder: "Images/milk.jpg", x: 8 });
   favBeverages.push({ label: "fruit juice", y: 0, folder: "Images/fruitjuice.jpg", x: 9 });
 
-/*Insert voting history into new session:   */
+/*Insert voting history, if any, into new session:   */
 var voteHistory = new Array();
   voteHistory = JSON.parse(localStorage.getItem("beverageTracker"));
 
@@ -60,6 +60,17 @@ function selectBeverages () {
   document.getElementById("img2").appendChild(img2Button);
 }; /*function selectBeverages closure.  */
 
+/*Variables and function to increment value in chart:   */
+var chart = 4;
+var incrementVote = 0;
+function countVote (vote) {
+  incrementVote = parseInt(vote.id);
+  favBeverages[incrementVote].y++;
+  localStorage.setItem("beverageTracker", JSON.stringify(favBeverages));
+  chart.render();
+}; /*function countVote closure.  */
+
+/*onVote, function that removes images and buttons:   */
 function clearSpans () {
   if (document.getElementById("img1pic") != "") {
   var removeImg1 = document.getElementById("img1pic");
@@ -75,16 +86,6 @@ function clearSpans () {
   } /*if closure. */
   selectBeverages();
 }; /*function clearSpans closure.   */
-
-/*Variables and function to increment value in chart:   */
-var chart = 4;
-var incrementVote = 0;
-function countVote (vote) {
-  incrementVote = parseInt(vote.id);
-  favBeverages[incrementVote].y++;
-  localStorage.setItem("beverageTracker", JSON.stringify(favBeverages));
-  chart.render();
-}; /*function countVote closure.  */
 
 /*Chartjs.js charting function:   */
 window.addEventListener('load', function () {
