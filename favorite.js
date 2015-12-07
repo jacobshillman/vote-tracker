@@ -12,15 +12,14 @@ var favBeverages = new Array ();
   favBeverages.push({ label: "fruit juice", y: 0, folder: "Images/fruitjuice.jpg", x: 9 });
 
 /*Insert voting history, if any, into new session:   */
-var voteHistory = new Array();
-  voteHistory = JSON.parse(localStorage.getItem("beverageTracker"));
-
-function retrieveHistory() {
-  if (voteHistory) {
-    for (index = 0; index < favBeverages.length; index++) {
-    favBeverages.splice(index, 1, voteHistory[index]);
-    } /*if closure. */ } /*for closure. */ }; /*function retrieveHistory closure. */
-retrieveHistory();
+  var voteHistory = new Array();
+    voteHistory = JSON.parse(localStorage.getItem("beverageTracker"));
+  function retrieveHistory() {
+    if (voteHistory) {
+      for (index = 0; index < favBeverages.length; index++) {
+      favBeverages.splice(index, 1, voteHistory[index]);
+      } /*if closure. */ } /*for closure. */ }; /*function retrieveHistory closure. */
+  retrieveHistory();
 
 /*Function that displays beverage set and buttons, and resets beverages after vote:  */
 function selectBeverages () {
@@ -59,6 +58,21 @@ function selectBeverages () {
       }); /*addEventListener closure.   */
   document.getElementById("img2").appendChild(img2Button);
 }; /*function selectBeverages closure.  */
+
+/*Build and display list of beverages so user can sort/hide order:  */
+window.addEventListener('load', function () {
+  function buildList () {
+    for (index = 0; index < favBeverages.length; index++) {
+      var listItem =  document.createElement("dd");
+      var listDisplay = document.getElementById("bevList");
+      listDisplay.appendChild(listItem);
+      listItem.textContent = favBeverages[index].label;
+    } /*for loop closure.   */
+  } /*function buildList closure.   */
+buildList();
+}); /*window.addEventListener closure.   */
+
+
 
 /*Variables and function to increment value in chart:   */
 var chart = 4;
@@ -128,4 +142,4 @@ window.addEventListener('load', function () {
 
   chart.render();
   selectBeverages();
-}); /*indow.addEventListener('load', function closure.  */
+}); /*window.addEventListener closure.  */

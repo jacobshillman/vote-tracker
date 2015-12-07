@@ -30,26 +30,43 @@ hgroup {
   text-decoration: underline;
 }
 
-/*CanvasJS chart formats:   */
-#chartDiv div {
-  display: block;
-  height: 450px;
+/*Chart and beverage list div flexbox format:   */
+#chartContent {
+
 }
 
-.canvasjs-chart-container {
-  background: none;
-  display: inline-block;
-}
+  /*Beverage list formats:  */
+  #bevList {
+    position: absolute;
+    color: orange;
+    font-size: 1.5em;
+    font-family: arial;
+    font-style: italic;
+  }
 
-.canvasjs-chart-canvas {
-  border: 4px solid green;
-  border-radius: 8px;
-  max-width: 99.5%;
-}
+  #dt {
+    font-style: normal;
+    text-decoration: underline;
+  }
 
-.canvasjs-chart-credit {
-  display: none;
-}
+  /*CanvasJS chart formats:   */
+  #chartDiv div {
+    height: 450px;
+  }
+
+  .canvasjs-chart-container {
+    background: none;
+  }
+
+  .canvasjs-chart-canvas {
+    border: 4px solid green;
+    border-radius: 8px;
+    right: 10%;
+  }
+
+  .canvasjs-chart-credit {
+    display: none;
+  }
 
 /*Beverage choice images formatting:  */
 .image {
@@ -60,8 +77,6 @@ hgroup {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  width: 30%;
-  height: auto;
 }
 
 #img1 {
@@ -80,8 +95,6 @@ img {
   margin-right: auto;
   border-radius: 5px;
   border: 2px solid grey;
-  width: 95%;
-  height: auto;
 }
 
 /*Voting buttion formatting:  */
