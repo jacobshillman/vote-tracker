@@ -61,21 +61,78 @@ function selectBeverages () {
 
 /*Build and display list of beverages so user can sort/hide order:  */
 window.addEventListener('load', function () {
-  function buildList () {
     for (index = 0; index < favBeverages.length; index++) {
       var listItem =  document.createElement("dd");
+      listItem.draggable = true;
+      listItem.className = "normal";
       var listDisplay = document.getElementById("bevList");
       listDisplay.appendChild(listItem);
       listItem.textContent = favBeverages[index].label;
     } /*for loop closure.   */
-  } /*function buildList closure.   */
-buildList();
 }); /*window.addEventListener closure.   */
 
+window.addEventListener("load", initializeDragItems);
+function initializeDragItems() {
+  var list = document.getElementById("bevList");
+  list.addEventListener("dragstart", startDrag);
+  list.addEventListener("dragover", dragOverItem);
+  list.addEventListener("drop", dropItem);
+  list.addEventListener("dragleave", resetStyle);
+}
+
+function startDrag(event) {
+  event.dataTransfer.setData("text/plain",
+      event.target.outerHTML);
+}
+
+function dragOverItem(event) {
+  event.preventDefault();
+  event.target.setAttribute("class", "droppable");
+}
+
+var changeOrder = 0;
+console.log(voteHistory);
+
+function dropItem(event) {
+  event.preventDefault();
+  var draggedContent = event.dataTransfer.getData("text");
+  var droppedContent = event.target.outerHTML;
+  var fullList = event.target.parentNode;
+  fullList.innerHTML = fullList.innerHTML.replace(draggedContent, "");
+  fullList.innerHTML = fullList.innerHTML.replace(droppedContent, droppedContent+draggedContent);
+  fullList.innerHTML = fullList.innerHTML.replace("droppable", "normal");
+//  console.log("Dropping "+draggedContent+" onto "+event.target.innerHTML);
+
+/*
+var newOrder = document.getElementsByTagName("dd");
+console.log(newOrder);
+console.log(newOrder[2]);
+
+  for (index = 0; index < favBeverages.length; index++) {
+
+console.log(newOrder[index]);
+
+    favBeverages[index].x = newOrder[index];
+console.log(favBeverages[index].x = newOrder[index]);
+  localStorage.setItem("beverageTracker", JSON.stringify(favBeverages));
+  chart.render();
+  }
+*/
+
+
+
+}
+
+
+
+function resetStyle(event) {
+  var fullList = event.target.parentNode;
+  fullList.innerHTML = fullList.innerHTML.replace("droppable", "normal");
+}
 
 
 /*Variables and function to increment value in chart:   */
-var chart = 4;
+var chart = 0;
 var incrementVote = 0;
 function countVote (vote) {
   incrementVote = parseInt(vote.id);
@@ -108,6 +165,8 @@ window.addEventListener('load', function () {
       animationEnabled: true,
       animationDuration: 750,
       interactivityEnabled: true,
+      width: 600,
+      height: 400,
 
     title:{
       text: "The beverage people enjoy most:",

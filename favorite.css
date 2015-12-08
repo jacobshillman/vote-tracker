@@ -30,38 +30,54 @@ hgroup {
   text-decoration: underline;
 }
 
-/*Chart and beverage list div flexbox format:   */
-#chartContent {
-
-}
+/*Chart and beverage list flexbox formats:   */
+#dynamicContent {
+  display: flex;
+  flex-wrap: wrap; }
+    #chartContent {
+      order: 1;
+      min-width: 675px;
+      height: 410px;
+      margin-left: 2%; }
+    #listContent {
+      order: 2;
+      width: 250px;
+      height: 400px;
+      margin-left: 2%;
+    }
 
   /*Beverage list formats:  */
   #bevList {
-    position: absolute;
     color: orange;
     font-size: 1.5em;
     font-family: arial;
     font-style: italic;
-  }
+    text-shadow: 2px 2px black; }
+      #dt {
+        font-style: normal;
+        text-decoration: underline; }
+      dd {
+        border-bottom: 2px solid black;
+        box-shadow: 2px 0px 4px black;
+        padding-left: 5px;
+        padding-bottom: 2px; }
+      .droppable {
+        padding-bottom: 12px;
+        border-bottom: 4px solid green; }
 
-  #dt {
-    font-style: normal;
-    text-decoration: underline;
-  }
+      .normal, .droppable {
+        transition: all .25s;
+      }
 
   /*CanvasJS chart formats:   */
-  #chartDiv div {
-    height: 450px;
-  }
-
   .canvasjs-chart-container {
     background: none;
   }
 
   .canvasjs-chart-canvas {
     border: 4px solid green;
+    box-shadow: 0px 0px 15px black;
     border-radius: 8px;
-    right: 10%;
   }
 
   .canvasjs-chart-credit {
@@ -69,10 +85,15 @@ hgroup {
   }
 
 /*Beverage choice images formatting:  */
+#images {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .image {
   display: inline-block;
   width: 450px;
-  height: 350px;
+  height: 300px;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -80,21 +101,25 @@ hgroup {
 }
 
 #img1 {
+  order: 1;
   float: left;
-  padding-left: 10%;
+  margin-left: 10%;
 }
 
 #img2 {
+  order: 2;
   float: right;
-  padding-right: 10%;
+  margin-right: 10%;
 }
 
 img {
+  max-width: 100%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
   border: 2px solid grey;
+  box-shadow: 0px 0px 15px grey;
 }
 
 /*Voting buttion formatting:  */
